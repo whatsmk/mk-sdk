@@ -4499,18 +4499,24 @@ mark {
   right: -1px;
   border-radius: inherit;
   border: 0 solid #1890ff;
-  opacity: 0.4;
-  animation: waveEffect 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  opacity: 0.2;
+  animation: fadeEffect 2s cubic-bezier(0.08, 0.82, 0.17, 1), waveEffect 0.4s cubic-bezier(0.08, 0.82, 0.17, 1);
+  animation-fill-mode: forwards;
   display: block;
+  pointer-events: none;
 }
 @keyframes waveEffect {
-  to {
-    opacity: 0;
+  100% {
     top: -6px;
     left: -6px;
     bottom: -6px;
     right: -6px;
     border-width: 6px;
+  }
+}
+@keyframes fadeEffect {
+  100% {
+    opacity: 0;
   }
 }
 .slide-up-enter,
@@ -5507,10 +5513,7 @@ mark {
   color: unset;
 }
 .ant-badge-count {
-  position: absolute;
-  transform: translate(50%, -50%);
-  top: 0;
-  right: 0;
+  top: -10px;
   height: 20px;
   border-radius: 10px;
   min-width: 20px;
@@ -5522,7 +5525,6 @@ mark {
   font-size: 12px;
   font-weight: normal;
   white-space: nowrap;
-  transform-origin: 0 center;
   box-shadow: 0 0 0 1px #fff;
 }
 .ant-badge-count a,
@@ -5533,17 +5535,20 @@ mark {
   padding: 0 8px;
 }
 .ant-badge-dot {
-  position: absolute;
-  transform: translate(50%, -50%);
-  transform-origin: 0 center;
-  top: 0;
-  right: 0;
+  top: -3px;
   height: 6px;
   width: 6px;
   border-radius: 100%;
   background: #f5222d;
   z-index: 10;
   box-shadow: 0 0 0 1px #fff;
+}
+.ant-badge-count,
+.ant-badge-dot {
+  position: absolute;
+  right: 0;
+  transform: translateX(50%);
+  transform-origin: 100%;
 }
 .ant-badge-status {
   line-height: inherit;
@@ -5632,19 +5637,19 @@ mark {
 @keyframes antZoomBadgeIn {
   0% {
     opacity: 0;
-    transform: scale(0) translateX(-50%);
+    transform: scale(0) translateX(50%);
   }
   100% {
-    transform: scale(1) translateX(-50%);
+    transform: scale(1) translateX(50%);
   }
 }
 @keyframes antZoomBadgeOut {
   0% {
-    transform: scale(1) translateX(-50%);
+    transform: scale(1) translateX(50%);
   }
   100% {
     opacity: 0;
-    transform: scale(0) translateX(-50%);
+    transform: scale(0) translateX(50%);
   }
 }
 .ant-breadcrumb {
@@ -7038,6 +7043,9 @@ a.ant-btn-sm {
   width: 100%;
   display: block;
 }
+.ant-card-cover img {
+  border-radius: 2px 2px 0 0;
+}
 .ant-card-actions {
   border-top: 1px solid #e8e8e8;
   background: #fafafa;
@@ -7544,6 +7552,7 @@ a.ant-btn-sm {
   padding: 0;
   border-right: 1px solid #e8e8e8;
   overflow: auto;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 .ant-cascader-menu:first-child {
   border-radius: 4px 0 0 4px;
@@ -7706,8 +7715,8 @@ a.ant-btn-sm {
   border: 0;
   left: 50%;
   top: 50%;
-  width: 9px;
-  height: 9px;
+  width: 8px;
+  height: 8px;
   background-color: #1890ff;
   opacity: 1;
 }
@@ -9405,7 +9414,6 @@ li.ant-calendar-time-picker-select-option-disabled:hover {
   top: 0;
   width: 0%;
   z-index: 1000;
-  transition: transform 0.3s cubic-bezier(0.9, 0, 0.3, 0.7);
 }
 .ant-drawer > * {
   transition: transform 0.3s cubic-bezier(0.9, 0, 0.3, 0.7);
@@ -9416,8 +9424,6 @@ li.ant-calendar-time-picker-select-option-disabled:hover {
 .ant-drawer .ant-drawer-content {
   width: 100%;
   height: 100%;
-  opacity: 0;
-  transition: opacity 0.3s linear;
 }
 .ant-drawer-left,
 .ant-drawer-right {
@@ -9454,10 +9460,7 @@ li.ant-calendar-time-picker-select-option-disabled:hover {
   bottom: 0;
 }
 .ant-drawer-bottom.ant-drawer-open .ant-drawer-content-wrapper {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-.ant-drawer.ant-drawer-open .ant-drawer-content {
-  opacity: 1;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.15);
 }
 .ant-drawer.ant-drawer-open .ant-drawer-mask {
   opacity: 0.3;
@@ -13832,6 +13835,9 @@ textarea.ant-input {
   float: none;
   display: inline-block;
 }
+.ant-input-group.ant-input-group-compact > span > .ant-input {
+  border-right-width: 0;
+}
 .ant-input-group.ant-input-group-compact .ant-input {
   float: none;
 }
@@ -14146,7 +14152,7 @@ textarea.ant-input-number {
 }
 .ant-input-number-handler-up-inner {
   top: 50%;
-  margin-top: -6px;
+  margin-top: -5px;
 }
 .ant-input-number-handler-up-inner:before {
   text-align: center;
@@ -14157,7 +14163,7 @@ textarea.ant-input-number {
 }
 .ant-input-number-handler-down {
   border-top: 1px solid #d9d9d9;
-  top: -1px;
+  top: 0;
   cursor: pointer;
 }
 .ant-input-number-handler-down-inner {
@@ -14915,6 +14921,15 @@ textarea.ant-mention-wrapper .ant-mention-editor {
   border-radius: 4px;
   z-index: 1050;
 }
+.ant-menu-submenu-popup:before {
+  position: absolute;
+  top: -7px;
+  left: -6px;
+  right: -6px;
+  bottom: 0;
+  content: ' ';
+  opacity: .0001;
+}
 .ant-menu-submenu > .ant-menu {
   background-color: #fff;
   border-radius: 4px;
@@ -15121,6 +15136,7 @@ textarea.ant-mention-wrapper .ant-mention-editor {
 }
 .ant-menu-inline-collapsed > .ant-menu-item,
 .ant-menu-inline-collapsed > .ant-menu-item-group > .ant-menu-item-group-list > .ant-menu-item,
+.ant-menu-inline-collapsed > .ant-menu-item-group > .ant-menu-item-group-list > .ant-menu-submenu > .ant-menu-submenu-title,
 .ant-menu-inline-collapsed > .ant-menu-submenu > .ant-menu-submenu-title {
   left: 0;
   text-overflow: clip;
@@ -15128,11 +15144,13 @@ textarea.ant-mention-wrapper .ant-mention-editor {
 }
 .ant-menu-inline-collapsed > .ant-menu-item .ant-menu-submenu-arrow,
 .ant-menu-inline-collapsed > .ant-menu-item-group > .ant-menu-item-group-list > .ant-menu-item .ant-menu-submenu-arrow,
+.ant-menu-inline-collapsed > .ant-menu-item-group > .ant-menu-item-group-list > .ant-menu-submenu > .ant-menu-submenu-title .ant-menu-submenu-arrow,
 .ant-menu-inline-collapsed > .ant-menu-submenu > .ant-menu-submenu-title .ant-menu-submenu-arrow {
   display: none;
 }
 .ant-menu-inline-collapsed > .ant-menu-item .anticon,
 .ant-menu-inline-collapsed > .ant-menu-item-group > .ant-menu-item-group-list > .ant-menu-item .anticon,
+.ant-menu-inline-collapsed > .ant-menu-item-group > .ant-menu-item-group-list > .ant-menu-submenu > .ant-menu-submenu-title .anticon,
 .ant-menu-inline-collapsed > .ant-menu-submenu > .ant-menu-submenu-title .anticon {
   font-size: 16px;
   line-height: 40px;
@@ -15140,6 +15158,7 @@ textarea.ant-mention-wrapper .ant-mention-editor {
 }
 .ant-menu-inline-collapsed > .ant-menu-item .anticon + span,
 .ant-menu-inline-collapsed > .ant-menu-item-group > .ant-menu-item-group-list > .ant-menu-item .anticon + span,
+.ant-menu-inline-collapsed > .ant-menu-item-group > .ant-menu-item-group-list > .ant-menu-submenu > .ant-menu-submenu-title .anticon + span,
 .ant-menu-inline-collapsed > .ant-menu-submenu > .ant-menu-submenu-title .anticon + span {
   max-width: 0;
   display: inline-block;
@@ -16442,6 +16461,7 @@ textarea.ant-pagination-options-quick-jumper input {
   margin-left: 8px;
   vertical-align: middle;
   display: inline-block;
+  white-space: nowrap;
   color: rgba(0, 0, 0, 0.45);
   line-height: 1;
 }
@@ -17980,7 +18000,8 @@ span.ant-radio + * {
   display: none;
 }
 .ant-steps-horizontal:not(.ant-steps-label-vertical) .ant-steps-item-description {
-  max-width: 140px;
+  max-width: 150px;
+  white-space: normal;
 }
 .ant-steps-item-custom .ant-steps-item-icon {
   background: none;
@@ -18171,7 +18192,7 @@ span.ant-radio + * {
 .ant-steps-dot .ant-steps-item-tail {
   width: 100%;
   top: 2px;
-  margin: 0 0 0 70px;
+  margin: 0 0 0 75px;
   padding: 0;
 }
 .ant-steps-dot .ant-steps-item-tail:after {
@@ -18210,7 +18231,7 @@ span.ant-radio + * {
   left: -26px;
 }
 .ant-steps-dot .ant-steps-item-content {
-  width: 140px;
+  width: 150px;
 }
 .ant-steps-dot .ant-steps-item-process .ant-steps-item-icon {
   width: 10px;
@@ -20249,7 +20270,7 @@ textarea.ant-time-picker-input {
   border-radius: 4px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   min-height: 32px;
-  word-break: break-all;
+  word-wrap: break-word;
 }
 .ant-tooltip-arrow {
   position: absolute;
@@ -20637,8 +20658,8 @@ span.ant-transfer-list-search-action {
   border: 0;
   left: 50%;
   top: 50%;
-  width: 9px;
-  height: 9px;
+  width: 8px;
+  height: 8px;
   background-color: #1890ff;
   opacity: 1;
 }
@@ -21065,8 +21086,8 @@ li.ant-tree-treenode-disabled > .ant-tree-node-content-wrapper:hover {
   border: 0;
   left: 50%;
   top: 50%;
-  width: 9px;
-  height: 9px;
+  width: 8px;
+  height: 8px;
   background-color: #1890ff;
   opacity: 1;
 }
@@ -21383,8 +21404,10 @@ li.ant-select-tree-treenode-disabled > .ant-select-tree-node-content-wrapper:hov
   width: 100%;
   height: 100%;
   position: relative;
-  padding: 16px 0;
   background: #fafafa;
+}
+.ant-upload.ant-upload-drag .ant-upload {
+  padding: 16px 0;
 }
 .ant-upload.ant-upload-drag.ant-upload-drag-hover:not(.ant-upload-disabled) {
   border: 2px dashed #40a9ff;
