@@ -116,7 +116,7 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     name: '[name].[ext]',
-                    limit: 8192
+                    limit: 1
                 }
             }
         }]
